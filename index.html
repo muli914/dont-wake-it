@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>别吵醒它</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./editorial.css" />
+    <link rel="stylesheet" href="./exploration.css" />
+  </head>
+  <body>
+    <div class="arrival" aria-hidden="true"><span>一座山，正在沉睡。</span></div>
+    <div id="stage" aria-hidden="true"></div>
+    <div class="atmosphere" aria-hidden="true"></div>
+    <div class="mountain-tip" aria-hidden="true">拖动山体 · 环视花园 <span>双击复位</span></div>
+
+    <div id="app" data-faction="">
+      <header class="topbar">
+        <p class="brand">别吵醒它 <span>LET IT DREAM</span></p>
+        <span id="chapterLabel" class="chapter-label">PROLOGUE / 序章</span>
+        <div class="sound-controls" role="group" aria-label="声音设置"><button id="musicBtn" type="button" aria-pressed="true">配乐 开</button><button id="heartbeatBtn" type="button" aria-pressed="true">心跳 开</button><button id="muteBtn" type="button" aria-pressed="false">声音开</button></div>
+      </header>
+
+      <section id="hud" class="hud" hidden>
+        <div class="hud-row">
+          <span>稳定度</span>
+          <div class="bar" aria-label="稳定度">
+            <i id="stabilityFill"></i>
+          </div>
+          <strong id="stabilityNum">35</strong>
+        </div>
+        <div class="beat-track">
+          <div id="beatPulse" class="beat-pulse"></div>
+          <span id="beatHint">对准心跳 · A 光族 / L 影族</span>
+        </div>
+        <p id="syncMsg" class="sync-msg">两人都按在拍点上，稳定度才会慢慢上升。</p>
+      </section>
+
+      <section id="panel" class="panel" data-screen="boot">
+        <p class="kicker">最小可玩片段</p>
+        <h1>别吵醒它</h1>
+        <p class="lead">
+          山体被当作资源。开采之后，你们会听见它的心跳。
+        </p>
+        <div class="actions">
+          <button id="startBtn" type="button" class="primary">开始</button>
+        </div>
+        <p class="note">点击开始后才会播放声音。同一台电脑两人协作，无需联网。</p>
+      </section>
+
+      <div id="touchControls" class="touch" hidden>
+        <button id="btnLight" type="button">光 · A</button>
+        <button id="btnShadow" type="button">影 · L</button>
+      </div>
+
+      <section id="exploreUI" hidden aria-label="双人探索">
+        <div class="split-divider" aria-hidden="true"></div>
+        <div class="explorer light"><span>01 / 光之旅人</span><strong>一束微光</strong><small>W A S D 移动</small><output id="lightDistance">距采集点 30 m</output></div>
+        <div class="explorer shadow"><span>02 / 影之旅人</span><strong>一束夜光</strong><small>↑ ← ↓ → 移动</small><output id="shadowDistance">距采集点 30 m</output></div>
+        <div class="explore-callout"><p id="exploreMessage" role="status" aria-live="polite">沿光迹向前探索</p><button id="collectTogether" disabled>沿光迹向前探索</button><small>两束光都进入矿点光环后，按 E / Enter 或点击共同采集</small></div>
+        <div class="movement-pad pad-light" role="group" aria-label="光点移动"><button data-move="KeyW" aria-label="光点向前">↑</button><div><button data-move="KeyA" aria-label="光点向左">←</button><button data-move="KeyS" aria-label="光点向后">↓</button><button data-move="KeyD" aria-label="光点向右">→</button></div></div>
+        <div class="movement-pad pad-shadow" role="group" aria-label="影点移动"><button data-move="ArrowUp" aria-label="影点向前">↑</button><div><button data-move="ArrowLeft" aria-label="影点向左">←</button><button data-move="ArrowDown" aria-label="影点向后">↓</button><button data-move="ArrowRight" aria-label="影点向右">→</button></div></div>
+      </section>
+
+      <div id="pauseOverlay" class="overlay" hidden>
+        <p>已暂停</p>
+        <span>回到此页后继续，避免节拍错乱</span>
+      </div>
+      <div class="edition"><span>光与影的共生寓言</span><span><a href="./CREDITS.html" target="_blank" rel="noopener" style="color:inherit;pointer-events:auto">真实心音 · 来源与授权 ↗</a></span></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+    <script src="./audio.js"></script>
+    <script src="./world.js"></script>
+    <script src="./exploration.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>
+
